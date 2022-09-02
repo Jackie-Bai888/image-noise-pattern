@@ -4,14 +4,7 @@ import numpy as np
 
 
 def white_balance_error(img, precent = 0.1):
-    """
-    #白平衡异常
-    输入:
-        img     图像
-    返回白平衡异常模块失效后的图像
-    """
     height, width, _ = img.shape
-    # 分离RBG通道
     imgB = img[:, :, 0]
     imgG = img[:, :, 1]
     imgR = img[:, :, 2]
@@ -23,7 +16,7 @@ def white_balance_error(img, precent = 0.1):
     gCoef = aveGray / gAve
     rCoef = aveGray / rAve
 
-    imgB = np.floor((imgB * bCoef))  # 向下取整
+    imgB = np.floor((imgB * bCoef))
     imgG = np.floor((imgG * gCoef))
     imgR = np.floor((imgR * rCoef))
 
@@ -47,7 +40,7 @@ def white_balance_error(img, precent = 0.1):
     return dst
 
 # '''
-#下面几行代码用来验证增强结果
+#test
 src = cv2.imread("../VOCdevkit/VOC2007/JPEGImages/000000.jpg")
 cv2.imshow('original image', src)
 augument_image = white_balance_error(src,0.5)
