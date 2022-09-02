@@ -3,23 +3,11 @@ import cv2
 import random
 
 def blur(img):
-    """
-    #生成失焦图像
-    输入:
-        img 图像
-    返回：
-        模糊后的图像
-    """
-    # 高斯模糊核大小为3*3
     gauss_blur = cv2.GaussianBlur(img, (3, 3), 0, 0)
     return gauss_blur
 
 
 def sp_noise(img, precent=0.01):
-    '''
-    添加椒盐噪声
-    prob:噪声比例
-    '''
     image = blur(img)
     output = np.zeros(img.shape, np.uint8)
     thres = 1 - precent
@@ -36,11 +24,6 @@ def sp_noise(img, precent=0.01):
 
 
 def gasuss_noise(img, mean=0, var=0.001):
-    '''
-        添加高斯噪声
-        mean : 均值
-        var : 方差
-    '''
     image = blur(img)
     image = np.array(image / 255, dtype=float)
     noise = np.random.normal(mean, var ** 0.5, image.shape)
@@ -55,7 +38,7 @@ def gasuss_noise(img, mean=0, var=0.001):
     return out
 
 # '''
-#下面几行代码用来验证增强结果
+#test
 src = cv2.imread("../VOCdevkit/VOC2007/JPEGImages/000000.jpg")
 blur_image = blur(src)
 sp_image = sp_noise(src, 0.2)
