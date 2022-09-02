@@ -21,7 +21,7 @@ def get_least_object_height_width(img_name):
     return least_height, least_width
 
 '''
-#下面几行代码用来验证增强结果
+#test
 img_name = '000001.jpg'
 least_height = get_least_object_height(img_name)
 # print(least_height)
