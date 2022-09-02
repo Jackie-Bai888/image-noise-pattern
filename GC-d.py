@@ -5,7 +5,7 @@ def gamma_correction(img, gamma_par=2):
     return gamma_corrected
 
 # '''
-#下面几行代码用来验证增强结果
+#test
 src = cv2.imread("../VOCdevkit/VOC2007/JPEGImages/000000.jpg")
 cv2.imshow('original img', src)
 gamma_img = gamma_correction(src, 4)
